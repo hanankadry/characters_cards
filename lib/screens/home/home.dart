@@ -11,13 +11,21 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Characters'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Your Characters'), centerTitle: true),
       body: Container(
         padding: const EdgeInsets.all(16),
-        child: const Text('Home'),
+        child: Column(
+          children: [
+            const Text('character list'),
+
+            FilledButton(
+              onPressed: () {
+                // navigate to the create screen
+              },
+              child: const Text('Create New'),
+            ),
+          ],
+        ),
       ),
     );
   }
