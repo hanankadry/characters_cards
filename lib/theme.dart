@@ -11,9 +11,13 @@ class AppColors {
   static Color highlightColor = const Color.fromRGBO(212, 172, 13, 1);
 }
 
+
 ThemeData primaryTheme = ThemeData(
+
   // seed color theme
-  colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: AppColors.primaryColor,
+  ),
 
   // scaffold color
   scaffoldBackgroundColor: AppColors.secondaryAccent,
@@ -34,16 +38,17 @@ ThemeData primaryTheme = ThemeData(
       letterSpacing: 1,
     ),
     headlineMedium: TextStyle(
-      color: AppColors.titleColor,
+      color: AppColors.titleColor, 
       fontSize: 16,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.bold, 
       letterSpacing: 1,
     ),
     titleMedium: TextStyle(
-      color: AppColors.titleColor,
-      fontSize: 18,
+      color: AppColors.titleColor, 
+      fontSize: 18, 
       fontWeight: FontWeight.bold,
       letterSpacing: 2,
     ),
   ),
+
 );
