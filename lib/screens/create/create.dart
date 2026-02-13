@@ -14,7 +14,6 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
-
   final _nameController = TextEditingController();
   final _sloganController = TextEditingController();
 
@@ -28,11 +27,11 @@ class _CreateState extends State<Create> {
 
   // submit handler
   void handleSubmit() {
-    if (_nameController.text.trim().isEmpty){
+    if (_nameController.text.trim().isEmpty) {
       // show error in dialog
       return;
     }
-    if (_sloganController.text.trim().isEmpty){
+    if (_sloganController.text.trim().isEmpty) {
       // show error in dialog
       return;
     }
@@ -41,21 +40,14 @@ class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const StyledTitle('Character Creation'),
-      ),
+      appBar: AppBar(title: const StyledTitle('Character Creation')),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         child: Column(
           children: [
-
             // welcome message
-            Center(
-              child: Icon(Icons.code, color: AppColors.primaryColor),
-            ),
-            const Center(
-              child: StyledHeading('Welcome, new player.'),
-            ),
+            Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
+            const Center(child: StyledHeading('Welcome, new player.')),
             const Center(
               child: StyledText('Create a name & slogan for your character.'),
             ),
@@ -88,39 +80,26 @@ class _CreateState extends State<Create> {
             const SizedBox(height: 30),
 
             // select vocation title
-            Center(
-              child: Icon(Icons.code, color: AppColors.primaryColor),
-            ),
+            Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
+            const Center(child: StyledHeading('Choose a Vocation.')),
             const Center(
-              child: StyledHeading('Choose a Vocation.')
+              child: StyledText('This determines your available skills.'),
             ),
-            const Center(
-              child: StyledText('This determines your available skills.')
-            ),
-            const SizedBox(height:30),
+            const SizedBox(height: 30),
 
             // vocation cards
-            const VocationCard(
-              vocation: Vocation.junkie, 
-            ),
-            const VocationCard(
-              vocation: Vocation.ninja, 
-            ),
-            const VocationCard(
-              vocation: Vocation.wizard, 
-            ),
-            const VocationCard(
-              vocation: Vocation.raider, 
-            ),
+            const VocationCard(vocation: Vocation.junkie),
+            const VocationCard(vocation: Vocation.ninja),
+            const VocationCard(vocation: Vocation.wizard),
+            const VocationCard(vocation: Vocation.raider),
 
             // submit button
             Center(
               child: StyledButton(
-                onPressed: handleSubmit, 
+                onPressed: handleSubmit,
                 child: const StyledHeading('Create Character'),
               ),
             ),
-
           ],
         ),
       ),
