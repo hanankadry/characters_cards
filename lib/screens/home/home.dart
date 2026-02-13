@@ -1,3 +1,5 @@
+import 'package:characters_cards/models/character.dart';
+import 'package:characters_cards/screens/character_card.dart';
 import 'package:characters_cards/shared/styled_button.dart';
 import 'package:characters_cards/shared/styled_text.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List characters = ['mario', 'luigi', 'peach', 'toad', 'bowser', 'koopa'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +28,7 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 itemCount: characters.length,
                 itemBuilder: (_, index) {
-                  return Container(
-                    color: Colors.grey[800],
-                    padding: const EdgeInsets.all(40),
-                    margin: const EdgeInsets.only(bottom: 40),
-                    child: Text(characters[index]),
-                  );
+                  return CharacterCard(characters[index]);
                 },
               ),
             ),

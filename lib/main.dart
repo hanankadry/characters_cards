@@ -3,7 +3,10 @@ import 'package:characters_cards/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(theme: primaryTheme, home: const Home()));
+  runApp(MaterialApp(
+    theme: primaryTheme,
+    home: const Home(),
+  ));
 }
 
 // sandbox
