@@ -1,6 +1,7 @@
 import 'package:characters_cards/models/character.dart';
 import 'package:characters_cards/models/vocation.dart';
 import 'package:characters_cards/screens/create/vocation_card.dart';
+import 'package:characters_cards/screens/home/home.dart';
 import 'package:characters_cards/shared/styled_button.dart';
 import 'package:characters_cards/shared/styled_text.dart';
 import 'package:characters_cards/theme.dart';
@@ -41,11 +42,47 @@ class _CreateState extends State<Create> {
   // submit handler
   void handleSubmit() {
     if (_nameController.text.trim().isEmpty) {
-      // show error in dialog
+      showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: const StyledHeading('Missing Character Name'),
+            content: const StyledText(
+              'Every good RPG character needs a great name...',
+            ),
+            actions: [
+              StyledButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                },
+                child: const StyledHeading('Close'),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
+
       return;
     }
     if (_sloganController.text.trim().isEmpty) {
-      // show error in dialog
+      showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: const StyledHeading('Missing Character Slogan'),
+            content: const StyledText('Remember to add a catchy saying...'),
+            actions: [
+              StyledButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const StyledHeading('Close'),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
+
       return;
     }
 
@@ -57,6 +94,8 @@ class _CreateState extends State<Create> {
         id: uuid.v4(),
       ),
     );
+
+    Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));
   }
 
   @override

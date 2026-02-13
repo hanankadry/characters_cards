@@ -1,9 +1,9 @@
-import 'package:characters_cards/screens/create/create.dart';
+import 'package:characters_cards/screens/home/home.dart';
 import 'package:characters_cards/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(theme: primaryTheme, home: const Create()));
+  runApp(MaterialApp(theme: primaryTheme, home: const Home()));
 }
 
 // sandbox

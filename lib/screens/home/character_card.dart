@@ -1,4 +1,5 @@
 import 'package:characters_cards/models/character.dart';
+import 'package:characters_cards/screens/profile/profile.dart';
 import 'package:characters_cards/shared/styled_text.dart';
 import 'package:characters_cards/theme.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,12 @@ class CharacterCard extends StatelessWidget {
 
             IconButton(
               onPressed: () {
-                // navigate to character profile screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => Profile(character: character),
+                  ),
+                );
               },
               icon: Icon(Icons.arrow_forward, color: AppColors.textColor),
             ),
