@@ -1,6 +1,7 @@
 import 'package:characters_cards/models/character.dart';
 import 'package:characters_cards/screens/profile/skill_list.dart';
 import 'package:characters_cards/screens/profile/stats_table.dart';
+import 'package:characters_cards/shared/styled_button.dart';
 import 'package:characters_cards/shared/styled_text.dart';
 import 'package:characters_cards/theme.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +80,21 @@ class Profile extends StatelessWidget {
             ),
 
             // save button
+            StyledButton(
+              onPressed: () {
+                // show snackbar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: const StyledHeading('Character saved.'),
+                    showCloseIcon: true,
+                    backgroundColor: AppColors.secondaryColor,
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              },
+              child: const StyledHeading('save character'),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
