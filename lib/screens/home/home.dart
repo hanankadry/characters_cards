@@ -1,127 +1,46 @@
-import 'package:characters_cards/models/vocation.dart';
-import 'package:characters_cards/screens/create/vocation_card.dart';
+import 'package:characters_cards/models/character.dart';
+import 'package:characters_cards/screens/home/character_card.dart';
 import 'package:characters_cards/shared/styled_button.dart';
 import 'package:characters_cards/shared/styled_text.dart';
-import 'package:characters_cards/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<Home> createState() => _HomeState();
 }
 
-class _CreateState extends State<Create> {
-
-  final _nameController = TextEditingController();
-  final _sloganController = TextEditingController();
-
-  @override
-  void dispose() {
-    // clean up the controller when the widget is disposed
-    _nameController.dispose();
-    _sloganController.dispose();
-    super.dispose();
-  }
-
-  // submit handler
-  void handleSubmit() {
-    if (_nameController.text.trim().isEmpty){
-      // show error in dialog
-      return;
-    }
-    if (_sloganController.text.trim().isEmpty){
-      // show error in dialog
-      return;
-    }
-  }
+class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const StyledTitle('Character Creation'),
+        title: const StyledTitle('Your Characters'),
+        centerTitle: true,
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-
-            // welcome message
-            Center(
-              child: Icon(Icons.code, color: AppColors.primaryColor),
-            ),
-            const Center(
-              child: StyledHeading('Welcome, new player.'),
-            ),
-            const Center(
-              child: StyledText('Create a name & slogan for your character.'),
-            ),
-            const SizedBox(height: 30),
-
-            // input for name & slogan
-            TextField(
-              controller: _nameController,
-              cursorColor: AppColors.textColor,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.person_2),
-                label: StyledText('Character name'),
-              ),
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
+            // list of characters
+            Expanded(
+              child: ListView.builder(
+                itemCount: characters.length,
+                itemBuilder: (_, index) {
+                  return CharacterCard(characters[index]);
+                }
               ),
             ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _sloganController,
-              cursorColor: AppColors.textColor,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.chat),
-                label: StyledText('Character slogan'),
-              ),
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
-              ),
+            
+            StyledButton(
+              onPressed: () {
+                // navigate to the create screen
+              },
+              child: const StyledHeading('Create New'),
             ),
-            const SizedBox(height: 30),
-
-            // select vocation title
-            Center(
-              child: Icon(Icons.code, color: AppColors.primaryColor),
-            ),
-            const Center(
-              child: StyledHeading('Choose a Vocation.')
-            ),
-            const Center(
-              child: StyledText('This determines your available skills.')
-            ),
-            const SizedBox(height:30),
-
-            // vocation cards
-            const VocationCard(
-              vocation: Vocation.junkie, 
-            ),
-            const VocationCard(
-              vocation: Vocation.ninja, 
-            ),
-            const VocationCard(
-              vocation: Vocation.wizard, 
-            ),
-            const VocationCard(
-              vocation: Vocation.raider, 
-            ),
-
-            // submit button
-            Center(
-              child: StyledButton(
-                onPressed: handleSubmit, 
-                child: const StyledHeading('Create Character'),
-              ),
-            ),
-
-          ],
+          ]
         ),
       ),
     );
